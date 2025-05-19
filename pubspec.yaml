@@ -36,6 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.8
 #  implicitly_animated_reorderable_list: ^0.4.0
   flutter_staggered_animations: ^1.1.0
+  reorderables: ^0.4.2
 
 dev_dependencies:
   flutter_test:

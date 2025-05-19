@@ -1,7 +1,16 @@
 
 import 'dart:math';
 
+import 'package:card_shuffle/AnimationPerGridItem.dart';
+import 'package:card_shuffle/CardShuffleApp.dart';
+import 'package:card_shuffle/CustomLayoutAnimation.dart';
+import 'package:card_shuffle/EntryAnimationGrid.dart';
+import 'package:card_shuffle/MultipleGridAnimation.dart';
 import 'package:card_shuffle/MyListViewEffect.dart';
+import 'package:card_shuffle/PositionSwitchingAnimation.dart';
+import 'package:card_shuffle/ReOrderAnimations.dart';
+import 'package:card_shuffle/SequentialSlideIn.dart';
+import 'package:card_shuffle/ShuffleAnimationSwitcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
@@ -23,58 +32,75 @@ class _CardShuffleState extends State<CardShuffle> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text("Animated Grid Shuffle")),
-      body: Column(
+      body:Center(
+     child:  Column(
         children: [
-          Expanded(
-            child: LayoutBuilder(
-              builder: (context, constraints) {
-                final itemSize = constraints.maxWidth / 3;
-
-                return AnimatedSwitcher(
-                  duration: Duration(milliseconds: 500),
-                  child: GridView.count(
-                    key: ValueKey(items.toString()), // Triggers animation
-                    crossAxisCount: 3,
-                    children: items
-                        .map((e) => AnimatedContainer(
-                      duration: Duration(milliseconds: 500),
-                      curve: Curves.easeInOut,
-                      width: itemSize,
-                      height: itemSize,
-                      margin: EdgeInsets.all(8),
-                      decoration: BoxDecoration(
-                        color: Colors.blue,
-                        // color: Colors.primaries[e % Colors.primaries.length],
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      alignment: Alignment.center,
-                      child: Text(
-                        'Item $e',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ))
-                        .toList(),
-                  ),
-                );
-              },
-            ),
-          ),
+          // ElevatedButton(
+          //   onPressed: () {
+          //    Navigator.push(context,
+          //        MaterialPageRoute(builder: (context)=>EntryAnimationGrid()));
+          //   },
+          //   child: Text("Entry Animation"),
+          // ),
+          // ElevatedButton(
+          //   onPressed: () {
+          //    Navigator.push(context,
+          //        MaterialPageRoute(builder: (context)=>ShuffleAnimationSwitcher()));
+          //   },
+          //   child: Text("Shuffle Animation"),
+          // ),
+          // ElevatedButton(
+          //   onPressed: () {
+          //    Navigator.push(context,
+          //        MaterialPageRoute(builder: (context)=>ReOrderAnimations()));
+          //   },
+          //   child: Text("Reorder Animation"),
+          // ),
+          // ElevatedButton(
+          //   onPressed: () {
+          //    Navigator.push(context,
+          //        MaterialPageRoute(builder: (context)=>AnimationPerGridItem()));
+          //   },
+          //   child: Text("Per Item Grid Animation"),
+          // ),
+          // ElevatedButton(
+          //   onPressed: () {
+          //    Navigator.push(context,
+          //        MaterialPageRoute(builder: (context)=>CustomLayoutAnimation()));
+          //   },
+          //   child: Text("Custom Layout Animation"),
+          // ),
+          // ElevatedButton(
+          //   onPressed: () {
+          //    Navigator.push(context,
+          //        MaterialPageRoute(builder: (context)=>MultipleGridAnimation()));
+          //   },
+          //   child: Text("Multiple Grid Animation"),
+          // ),
+          // ElevatedButton(
+          //   onPressed: () {
+          //    Navigator.push(context,
+          //        MaterialPageRoute(builder: (context)=>SequentialSlideIn()));
+          //   },
+          //   child: Text("Sequential Animation"),
+          // ),
+          // ElevatedButton(
+          //   onPressed: () {
+          //    Navigator.push(context,
+          //        MaterialPageRoute(builder: (context)=>PositionSwitchingAnimation()));
+          //   },
+          //   child: Text("Position Animation"),
+          // ),
           ElevatedButton(
             onPressed: () {
-              setState(() {
-                items.shuffle(Random());
-              });
+             Navigator.push(context,
+                 MaterialPageRoute(builder: (context)=>CardShuffleApp()));
             },
-            child: Text("Shuffle"),
-          ),
-          ElevatedButton(
-            onPressed: () {
-             Navigator.push(context, MaterialPageRoute(builder: (context)=>MyListViewEffect()));
-            },
-            child: Text("ListView Animation"),
+            child: Text("Card Shuffle Game"),
           )
         ],
       ),
+      )
     );
   }
 }
